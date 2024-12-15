@@ -14,7 +14,7 @@ export default function Home() {
     "name": "Instalación de Cargadores Eléctricos en Condominios",
     "provider": {
       "@type": "Organization",
-      "name": "EcoCharge",
+      "name": "Deekarb",
       "description": "Especialistas en instalación de cargadores para autos eléctricos en condominios",
       "areaServed": "Chile"
     },

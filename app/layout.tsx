@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Instalación de Cargadores Eléctricos en Condominios | EcoCharge",
+  title: "Instalación de Cargadores Eléctricos en Condominios | Deekarb",
   description: "Especialistas en instalación de cargadores para autos eléctricos en condominios y edificios residenciales. Gestión integral desde la aprobación hasta el mantenimiento.",
   keywords: "cargador auto eléctrico, instalación condominio, punto de carga edificio, carga vehículo eléctrico comunidad",
   openGraph: {
