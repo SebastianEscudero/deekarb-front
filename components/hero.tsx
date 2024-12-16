@@ -54,11 +54,11 @@ export function Hero() {
               <div className="flex flex-col justify-center h-full max-w-2xl space-y-6 p-8">
                 <div className="inline-flex items-center rounded-full border bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-white">
                   <span className="block size-2 rounded-full bg-primary mr-2 animate-pulse" />
-                  Instalación rápida en condominios y edificios
+                  ¿Quieres un auto eléctrico y no tienes un punto de carga en tu edificio?
                 </div>
 
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
-                  Instala un punto de carga en tu comunidad sin costo
+                  Podemos instalar un punto de carga en tu edificio sin costo
                 </h1>
 
                 <p className="text-xl text-white/90">
@@ -73,7 +73,7 @@ export function Hero() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    Nueva fuente de ingresos comunitarios
+                    Disfruta de tu auto eléctrico sin preocupaciones
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />

@@ -7,8 +7,8 @@ import { Card } from "./ui/card"
 const features = [
   {
     icon: <Building2 className="w-6 h-6 text-primary" />,
-    title: "Instalación sin costo",
-    description: "Instalamos y configuramos los puntos de carga en tu edificio o condominio sin costo inicial para la comunidad."
+    title: "Financiamiento flexible",
+    description: "Nos adaptamos a las necesidades de tu comunidad. Instalamos y configuramos los puntos de carga en tu edificio o condominio con soluciones flexibles de financiamiento."
   },
   {
     icon: <Wrench className="w-6 h-6 text-primary" />,
@@ -17,8 +17,8 @@ const features = [
   },
   {
     icon: <Wallet className="w-6 h-6 text-primary" />,
-    title: "Nueva fuente de ingresos",
-    description: "Tu comunidad genera ingresos pasivos por el uso de los cargadores, mejorando el fondo común."
+    title: "Facilidad administrativa",
+    description: "Nos encargamos de todo el papeleo y analisis tecnico de la instalacion, dejalo todo en nuestras manos."
   },
   {
     icon: <BarChart3 className="w-6 h-6 text-primary" />,
@@ -36,8 +36,7 @@ export function Features() {
             La solución completa para tu comunidad
           </h2>
           <p className="text-xl text-muted-foreground max-w-[800px] mx-auto">
-            Transformamos espacios de estacionamiento en puntos de carga rentables, 
-            sin inversión inicial y con beneficios directos para tu comunidad.
+            Transformamos espacios de estacionamiento en puntos de carga para autos eléctricos, sin inversión inicial y con beneficios directos para tu comunidad.
           </p>
         </div>
 
