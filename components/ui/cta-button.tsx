@@ -1,22 +1,18 @@
-import { cn } from "@/lib/utils"
-import { Button } from "./button"
-import { ChevronRight } from "lucide-react"
+"use client"
 
-export const CtaButton = ({ 
-  children, 
-  className,
-}: { 
-  children: React.ReactNode, 
-  className?: string,
-}) => {
-  const onClick = () => {
-    console.log('clicked')
-  }
+import { useRouter } from "next/navigation"
+import { Button } from "./button"
+
+export function CtaButton({ children, className }: { children: React.ReactNode, className?: string }) {
+  const router = useRouter()
 
   return (
-    <Button variant="default" className={cn(className)} onClick={onClick}>
+    <Button 
+      size="lg" 
+      className={className}
+      onClick={() => router.push('/onboarding')}
+    >
       {children}
-      <ChevronRight className="ml-2 h-4 w-4" />
     </Button>
   )
 }
