@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 
 export function Footer() {
@@ -6,8 +7,17 @@ export function Footer() {
     <footer className="border-t">
       <div className="container py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          <div className="space-y-4">
-            <h4 className="text-xl font-bold">Deekarb</h4>
+          <div className="space-y-2">
+            <div className="flex items-center mb-2">
+              <Link href="/" className="flex items-center">
+                <Image 
+                  src="/logos/deekarb-logo.svg" 
+                  alt="Deekarb - Inicio" 
+                  width={180} 
+                  height={180}
+                />
+              </Link>
+            </div>
             <p className="text-sm text-muted-foreground">
               Soluciones de carga para vehículos eléctricos en comunidades residenciales
             </p>
