@@ -25,8 +25,8 @@ export function Calculator() {
     }
 
     const annualKm = parseInt(monthlyKm) * 12 * parseInt(vehicles)
-    const fuelCost = (annualKm / 100) * 8 * 2100 // 8L/100km, $2.100/L
-    const electricityCost = (annualKm / 100) * 15 * 150 // 15kWh/100km, $150/kWh
+    const fuelCost = (annualKm / 100) * 8 * 1400 // 8L/100km, $1.400/L
+    const electricityCost = (annualKm / 100) * 15 * 170 // 15kWh/100km, $170/kWh
     const savings = Math.max(0, fuelCost - electricityCost)
     return new Intl.NumberFormat('es-CL', {
       style: 'currency',
