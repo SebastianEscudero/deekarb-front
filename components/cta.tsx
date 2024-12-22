@@ -31,7 +31,7 @@ const benefits = [
 
 export function CTA() {
   return (
-    <div className="bg-background py-8">
+    <section className="bg-background py-8" id="contacto">
       <div className="container mx-auto">
         <div className="relative rounded-lg overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
@@ -83,6 +83,6 @@ export function CTA() {
           <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 to-transparent" />
         </div>
       </div>
-    </div>
+    </section>
   )
 }

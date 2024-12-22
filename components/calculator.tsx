@@ -72,7 +72,7 @@ export function Calculator() {
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="hidden lg:flex relative h-[400px] rounded-lg overflow-hidden max-w-[550px]">
               <Image
-                src="/landing/campfire.svg"
+                src="/illustrations/campfire.svg"
                 alt="Auto eléctrico cargando"
                 fill
                 className="object-cover"
