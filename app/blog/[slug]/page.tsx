@@ -12,7 +12,6 @@ import { Metadata } from "next"
 import { CheckCircle } from "lucide-react"
 import { BlogCard } from "@/components/blog/card"
 import { CtaButton } from "@/components/ui/cta-button"
-import { ArticleJsonLd } from 'next-seo'
 
 const portableTextComponents: PortableTextComponents = {
   types: {
@@ -129,41 +128,49 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const post = await getPost(params.slug)
-     if (!post) {
-      return {
-        title: 'Post no encontrado | Blog Deekarb',
-      }
-    }
-     return {
-      title: `${post.title} | Blog Deekarb`,
-      description: post.excerpt,
-      openGraph: {
-        title: post.title,
-        description: post.excerpt,
-        type: 'article',
-        publishedTime: post.publishedAt,
-        images: post.mainImage ? [
-          {
-            url: urlFor(post.mainImage).width(1200).height(630).url(),
-            width: 1200,
-            height: 630,
-            alt: post.title,
-          }
-        ] : [],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: post.title,
-        description: post.excerpt,
-        images: post.mainImage ? [urlFor(post.mainImage).width(1200).height(630).url()] : [],
-      }
-    }
+type Props = {
+  params: Promise<{ slug: string }>
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const post = await getPost(params.slug)
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = await getPost(resolvedParams.slug)
+  if (!post) {
+    return {
+      title: 'Post no encontrado | Blog Deekarb',
+    }
+  }
+  return {
+    title: `${post.title} | Blog Deekarb`,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.publishedAt,
+      images: post.mainImage ? [
+        {
+          url: urlFor(post.mainImage).width(1200).height(630).url(),
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.mainImage ? [urlFor(post.mainImage).width(1200).height(630).url()] : [],
+    }
+  }
+}
+
+export default async function BlogPost({ params }: Props) {
+  const resolvedParams = await params;
+  const post = await getPost(resolvedParams.slug)
   const relatedPosts = await getRelatedPosts(
     post._id, 
     post.categories.map((cat: Category) => cat._id)
@@ -311,15 +318,24 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
       <div className="h-32 bg-gradient-to-t from-white to-transparent" />
 
-      <ArticleJsonLd
-        type="BlogPosting"
-        url={`https://www.deekarb.com/blog/${post.slug.current}`}
-        title={post.title}
-        images={[post.mainImage ? urlFor(post.mainImage).url() : '']}
-        datePublished={post.publishedAt}
-        dateModified={post.publishedAt}
-        authorName={post.author.name}
-        description={post.excerpt || ''}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            url: `https://www.deekarb.com/blog/${post.slug.current}`,
+            headline: post.title,
+            image: post.mainImage ? [urlFor(post.mainImage).url()] : [],
+            datePublished: post.publishedAt,
+            dateModified: post.publishedAt,
+            author: {
+              '@type': 'Person',
+              name: post.author.name,
+            },
+            description: post.excerpt || '',
+          }),
+        }}
       />
     </div>
   )

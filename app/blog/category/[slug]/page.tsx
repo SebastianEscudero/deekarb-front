@@ -50,37 +50,43 @@ async function getData(slug: string) {
   return { category, posts }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const data = await getData(params.slug)
-    
-    if (!data) {
-      return {
-        title: 'Categoría no encontrada | Blog Deekarb',
-      }
-    }
-    
-    const { category } = data
-    const title = `${category.title} | Blog Deekarb`
-    const description = category.description || `Artículos sobre ${category.title}`
-    
-     return {
-      title,
-      description,
-      openGraph: {
-        title,
-        description,
-        type: 'website',
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-      },
-    }
+type Props = {
+  params: Promise<{ slug: string }>
 }
 
-export default async function CategoryPage({ params }: { params: { slug: string } }) {
-  const data = await getData(params.slug)
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const resolvedParams = await params;
+  const data = await getData(resolvedParams.slug)
+  
+  if (!data) {
+    return {
+      title: 'Categoría no encontrada | Blog Deekarb',
+    }
+  }
+  
+  const { category } = data
+  const title = `${category.title} | Blog Deekarb`
+  const description = category.description || `Artículos sobre ${category.title}`
+  
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  }
+}
+
+export default async function CategoryPage({ params }: Props) {
+  const resolvedParams = await params;
+  const data = await getData(resolvedParams.slug)
 
   if (!data) {
     notFound()
