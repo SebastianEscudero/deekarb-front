@@ -25,7 +25,7 @@ export function Hero() {
   return (
     <div className="bg-background py-8">
       <div className="container mx-auto">
-        <div className="relative h-[650px] rounded-lg overflow-hidden">
+        <div className="relative min-h-[600px] rounded-lg overflow-hidden">
           {images.map((image, index) => (
             <div
               key={image.src}
