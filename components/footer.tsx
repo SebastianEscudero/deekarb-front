@@ -111,13 +111,13 @@ export function Footer() {
               <ul className="space-y-4">
                 <li className="text-muted-foreground">
                   <strong className="text-foreground">Oficina Central:</strong><br />
-                  Av. Apoquindo 4700<br />
+                  Los Militares 5620<br />
                   Las Condes, Santiago
                 </li>
                 <li className="text-muted-foreground">
                   <strong className="text-foreground">Ventas:</strong><br />
                   greg@deekarb.com<br />
-                  +56 2 2123 4567
+                  +56 9 9947 4229
                 </li>
               </ul>
             </div>
