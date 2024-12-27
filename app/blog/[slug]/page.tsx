@@ -33,13 +33,13 @@ const portableTextComponents: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <h1 className="text-4xl font-bold mt-16 mb-6 text-[#1A1A1A]">{children}</h1>
+      <h1 className="text-5xl font-bold mt-16 mb-6 text-[#1A1A1A]">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-bold mt-12 mb-6 text-[#1A1A1A]">{children}</h2>
+      <h2 className="text-4xl font-bold mt-12 mb-6 text-[#1A1A1A]">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-bold mt-8 mb-4 text-[#1A1A1A]">{children}</h3>
+      <h3 className="text-3xl font-bold mt-8 mb-4 text-[#1A1A1A]">{children}</h3>
     ),
     normal: ({ children }) => (
       <p className="mb-6 text-lg leading-relaxed text-[#4A4A4A]">{children}</p>
@@ -51,31 +51,34 @@ const portableTextComponents: PortableTextComponents = {
     ),
   },
   marks: {
+    strong: ({ children }) => (
+      <strong className="font-semibold text-[#1A1A1A]">{children}</strong>
+    ),
+    em: ({ children }) => (
+      <em className="italic text-[#1A1A1A]">{children}</em>
+    ),
+    code: ({ children }) => (
+      <code className="bg-gray-100 rounded px-1 py-0.5 text-sm">{children}</code>
+    ),
     link: ({ children, value }) => (
       <a
         href={value?.href}
-        className="text-primary hover:underline"
+        className="text-primary underline decoration-primary/30 hover:decoration-primary transition-all"
         target="_blank"
         rel="noopener noreferrer"
       >
         {children}
       </a>
     ),
-    strong: ({ children }) => (
-      <strong className="font-bold text-[#1A1A1A]">{children}</strong>
-    ),
-    em: ({ children }) => (
-      <em className="italic text-[#1A1A1A]">{children}</em>
-    ),
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside mb-6 space-y-2 text-[#4A4A4A] marker:text-primary">
+      <ul className="list-disc pl-6 mb-6 space-y-2 text-[#4A4A4A]">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal list-inside mb-6 space-y-2 text-[#4A4A4A]">
+      <ol className="list-decimal pl-6 mb-6 space-y-2 text-[#4A4A4A]">
         {children}
       </ol>
     ),
