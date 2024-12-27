@@ -6,37 +6,33 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ArrowLeft, X, Check, Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import emailjs from '@emailjs/browser';
+import { LocationPicker } from '@/components/location-picker'
 
 interface FormData {
+  serviceType: "ev" | "evcharger" | "solar" | ""
   name: string
   email: string
   phone: string
-  address: string
-  city: string
-  postalCode: string
-  country: string
-  residenceType: "condominio" | "edificio" | "casa" | "otro"
-  parkingSpots: string
+  region: string
+  comuna: string
+  direccion: string
+  message: string
+  coordinates: {
+    lat: number | null;
+    lng: number | null;
+  };
 }
 
 interface FormErrors {
+  serviceType?: string
   name?: string
   email?: string
   phone?: string
-  address?: string
-  city?: string
-  postalCode?: string
-  country?: string
-  residenceType?: string
-  parkingSpots?: string
+  region?: string
+  comuna?: string
+  direccion?: string
+  message?: string
 }
 
 interface SuccessStats {
@@ -53,31 +49,43 @@ const mockStats: SuccessStats = {
 
 const steps = [
   {
+    id: "service",
+    title: "¿Con que podemos ayudarte?",
+    description: "Selecciona el servicio que necesitas",
+    fields: ["serviceType"] as const
+  },
+  {
     id: "contact",
     title: "¿Cómo podemos contactarte?",
     description: "Te mantendremos informado sobre tu instalación",
     fields: ["name", "email", "phone"] as const
   },
   {
-    id: "residence",
-    title: "¿Dónde quieres instalar tu cargador?",
-    description: "Para evaluar la mejor solución para tu comunidad",
-    fields: ["address", "city", "postalCode", "country", "residenceType", "parkingSpots"] as const
+    id: "location",
+    title: "¿Dónde estás ubicado?",
+    description: "Necesitamos saber tu ubicación para brindarte el mejor servicio",
+    fields: ["direccion"] as const
+  },
+  {
+    id: "message",
+    title: "Cuéntanos más sobre tus necesidades",
+    description: "¿Qué necesitas específicamente?",
+    fields: ["message"] as const
   }
 ]
 
 export function OnboardingFlow() {
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<FormData>({
+    serviceType: "",
     name: "",
     email: "",
     phone: "",
-    address: "",
-    city: "",
-    postalCode: "",
-    country: "chile",
-    residenceType: "condominio",
-    parkingSpots: ""
+    region: "",
+    comuna: "",
+    direccion: "",
+    message: "",
+    coordinates: { lat: null, lng: null },
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const router = useRouter()
@@ -114,17 +122,17 @@ export function OnboardingFlow() {
   }
 
   const handleInputChange = (field: keyof FormData) => (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [field]: e.target.value })
-    if (errors[field]) {
+    if (errors[field as keyof FormErrors]) {
       setErrors({ ...errors, [field]: undefined })
     }
   }
 
   const handleSelectChange = (field: keyof FormData, value: string) => {
     setFormData({ ...formData, [field]: value })
-    if (errors[field]) {
+    if (errors[field as keyof FormErrors]) {
       setErrors({ ...errors, [field]: undefined })
     }
   }
@@ -145,12 +153,17 @@ export function OnboardingFlow() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          address: formData.address,
-          city: formData.city,
-          postalCode: formData.postalCode,
-          country: formData.country,
-          residenceType: formData.residenceType,
-          parkingSpots: formData.parkingSpots
+          message: formData.message,
+          address: formData.direccion,
+          coordinates: `Lat: ${formData.coordinates.lat}, Lng: ${formData.coordinates.lng}`,
+          service_type: (() => {
+            switch(formData.serviceType) {
+              case 'ev': return 'Vehículo Eléctrico';
+              case 'evcharger': return 'Cargador EV';
+              case 'solar': return 'Panel Solar';
+              default: return 'No especificado';
+            }
+          })(),
         },
         publicKey
       )
@@ -182,8 +195,47 @@ export function OnboardingFlow() {
     }
   }
 
+  const handleLocationChange = (direccion: string, coordinates: { lat: number, lng: number }) => {
+    setFormData({
+      ...formData,
+      direccion,
+      coordinates: coordinates
+    })
+    if (errors.direccion) {
+      setErrors({ ...errors, direccion: undefined })
+    }
+  }
+
   const renderStepContent = (step: typeof steps[number]) => {
     switch (step.id) {
+      case "service":
+        return (
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                { value: "ev", label: "Vehículo Eléctrico", icon: "🚗" },
+                { value: "evcharger", label: "Cargador EV", icon: "⚡" },
+                { value: "solar", label: "Panel Solar", icon: "☀️" },
+              ].map((option) => (
+                <button
+                  key={option.value}
+                  onClick={() => handleSelectChange("serviceType", option.value)}
+                  className={`p-6 text-center rounded-lg border transition-all hover:border-primary
+                    ${formData.serviceType === option.value 
+                      ? "border-primary bg-primary/5" 
+                      : "border-border hover:bg-primary/5"
+                    }`}
+                >
+                  <div className="text-4xl mb-4">{option.icon}</div>
+                  <div className="font-medium">{option.label}</div>
+                </button>
+              ))}
+            </div>
+            {errors.serviceType && (
+              <p className="mt-1 text-sm text-red-500">{errors.serviceType}</p>
+            )}
+          </div>
+        )
       case "contact":
         return (
           <div className="space-y-4">
@@ -224,92 +276,40 @@ export function OnboardingFlow() {
             </div>
           </div>
         )
-      case "residence":
+      case "location":
         return (
           <div className="space-y-4">
+            <LocationPicker
+              direccion={formData.direccion}
+              onDireccionChange={handleLocationChange}
+            />
             <div>
-              <Select 
-                value={formData.country} 
-                onValueChange={(value) => handleSelectChange("country", value)}
-              >
-                <SelectTrigger className={errors.country ? 'border-red-500' : ''}>
-                  <SelectValue placeholder="País" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="chile">Chile</SelectItem>
-                  <SelectItem value="argentina">Argentina</SelectItem>
-                  <SelectItem value="peru">Perú</SelectItem>
-                  <SelectItem value="colombia">Colombia</SelectItem>
-                </SelectContent>
-              </Select>
-              {errors.country && (
-                <p className="mt-1 text-sm text-red-500">{errors.country}</p>
-              )}
-            </div>
-            <div>
-              <Input 
-                placeholder="Dirección del condominio/edificio" 
-                className={`text-lg ${errors.address ? 'border-red-500' : ''}`}
-                value={formData.address}
-                onChange={handleInputChange("address")}
+              <Input
+                placeholder="Dirección"
+                className={`text-lg ${errors.direccion ? 'border-red-500' : ''}`}
+                value={formData.direccion}
+                onChange={handleInputChange("direccion")}
               />
-              {errors.address && (
-                <p className="mt-1 text-sm text-red-500">{errors.address}</p>
+              {errors.direccion && (
+                <p className="mt-1 text-sm text-red-500">{errors.direccion}</p>
               )}
             </div>
-            <div>
-              <Input 
-                placeholder="Ciudad" 
-                className={`text-lg ${errors.city ? 'border-red-500' : ''}`}
-                value={formData.city}
-                onChange={handleInputChange("city")}
-              />
-              {errors.city && (
-                <p className="mt-1 text-sm text-red-500">{errors.city}</p>
-              )}
-            </div>
-            <div>
-              <Input 
-                placeholder="Código Postal" 
-                className={`text-lg ${errors.postalCode ? 'border-red-500' : ''}`}
-                value={formData.postalCode}
-                onChange={handleInputChange("postalCode")}
-              />
-              {errors.postalCode && (
-                <p className="mt-1 text-sm text-red-500">{errors.postalCode}</p>
-              )}
-            </div>
-            <div>
-              <Select 
-                value={formData.residenceType} 
-                onValueChange={(value) => handleSelectChange("residenceType", value)}
-              >
-                <SelectTrigger className={errors.residenceType ? 'border-red-500' : ''}>
-                  <SelectValue placeholder="Tipo de residencia" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="condominio">Condominio</SelectItem>
-                  <SelectItem value="edificio">Edificio</SelectItem>
-                  <SelectItem value="casa">Casa</SelectItem>
-                  <SelectItem value="otro">Otro</SelectItem>
-                </SelectContent>
-              </Select>
-              {errors.residenceType && (
-                <p className="mt-1 text-sm text-red-500">{errors.residenceType}</p>
-              )}
-            </div>
-            <div>
-              <Input 
-                placeholder="Número de estacionamientos" 
-                type="number"
-                className={`text-lg ${errors.parkingSpots ? 'border-red-500' : ''}`}
-                value={formData.parkingSpots}
-                onChange={handleInputChange("parkingSpots")}
-              />
-              {errors.parkingSpots && (
-                <p className="mt-1 text-sm text-red-500">{errors.parkingSpots}</p>
-              )}
-            </div>
+          </div>
+        )
+      case "message":
+        return (
+          <div className="space-y-4">
+            <textarea
+              placeholder="Describe tu proyecto o necesidades específicas..."
+              className={`w-full min-h-[200px] p-4 text-lg rounded-lg border 
+                ${errors.message ? 'border-red-500' : 'border-input'}
+                focus:outline-none focus:ring-2 focus:ring-primary`}
+              value={formData.message}
+              onChange={(e) => handleInputChange("message")(e)}
+            />
+            {errors.message && (
+              <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+            )}
           </div>
         )
     }
@@ -388,14 +388,12 @@ export function OnboardingFlow() {
           <AnimatedEntry>
             <div className="space-y-12">
               <div className="space-y-6">
-                <div>
-                  <h2 className="text-4xl font-bold tracking-tight">
-                    {currentStepData.title}
-                  </h2>
-                  <p className="text-xl text-muted-foreground">
-                    {currentStepData.description}
-                  </p>
-                </div>
+                <h2 className="text-4xl font-bold tracking-tight">
+                  {currentStepData.title}
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  {currentStepData.description}
+                </p>
               </div>
 
               {renderStepContent(currentStepData)}
