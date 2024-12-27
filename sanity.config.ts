@@ -12,8 +12,8 @@ export default defineConfig({
   name: 'default',
   title: 'Deekarb Blog',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  projectId: '9szrs4t4',
+  dataset: 'production',
 
   plugins: [deskTool()],
 
