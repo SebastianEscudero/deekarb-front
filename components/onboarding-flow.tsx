@@ -4,7 +4,7 @@ import { useState } from "react"
 import { AnimatedEntry } from "@/components/ui/animated-entry"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ArrowLeft, X, Check, Loader2 } from "lucide-react"
+import { ArrowRight, ArrowLeft, X, Check, Loader2, Car, Fuel, Sun } from "lucide-react"
 import { useRouter } from "next/navigation"
 import emailjs from '@emailjs/browser';
 import { LocationPicker } from '@/components/location-picker'
@@ -213,21 +213,48 @@ export function OnboardingFlow() {
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
-                { value: "ev", label: "Vehículo Eléctrico", icon: "🚗" },
-                { value: "evcharger", label: "Cargador EV", icon: "⚡" },
-                { value: "solar", label: "Panel Solar", icon: "☀️" },
+                {
+                  value: "ev",
+                  label: "Vehículo Eléctrico",
+                  image: "/servicios/auto-electrico.jpg",
+                  icon: <Car className="h-8 w-8 text-white" />,
+                },
+                {
+                  value: "evcharger",
+                  label: "Cargadores eléctricos",
+                  image: "/servicios/cargador-auto-electrico.jpg",
+                  icon: <Fuel className="h-8 w-8 text-white" />,
+                },
+                {
+                  value: "solar",
+                  label: "Paneles solares",
+                  image: "/servicios/paneles-solares.jpg",
+                  icon: <Sun className="h-8 w-8 text-white" />,
+                },
               ].map((option) => (
                 <button
                   key={option.value}
-                  onClick={() => handleSelectChange("serviceType", option.value)}
-                  className={`p-6 text-center rounded-lg border transition-all hover:border-primary
+                  onClick={() => {
+                    handleSelectChange("serviceType", option.value)
+                    setCurrentStep(currentStep + 1)
+                  }}                  
+                  className={`relative p-6 text-center rounded-lg border transition-all overflow-hidden h-48
                     ${formData.serviceType === option.value 
-                      ? "border-primary bg-primary/5" 
-                      : "border-border hover:bg-primary/5"
+                      ? "border-primary ring-2 ring-primary" 
+                      : "border-border hover:border-primary"
                     }`}
                 >
-                  <div className="text-4xl mb-4">{option.icon}</div>
-                  <div className="font-medium">{option.label}</div>
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: `url(${option.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-black/30" />
+                  <div className="relative h-full flex flex-col items-center justify-center text-white">
+                    <div className="mx-auto w-16 h-16 mb-4 rounded-full bg-black/10 backdrop-blur-sm flex items-center justify-center">
+                      {option.icon}
+                    </div>
+                    <div className="font-medium text-lg">{option.label}</div>
+                  </div>
                 </button>
               ))}
             </div>

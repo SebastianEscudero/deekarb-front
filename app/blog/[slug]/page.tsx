@@ -10,7 +10,6 @@ import Link from "next/link"
 import { ArrowLeft, Car, ChevronRight, Fuel, Sun } from "lucide-react"
 import { Metadata } from "next"
 import { BlogCard } from "@/components/blog/card"
-import { CtaButton } from "@/components/ui/cta-button"
 
 const portableTextComponents: PortableTextComponents = {
   types: {
@@ -107,6 +106,7 @@ async function getPost(slug: string): Promise<Post> {
 async function getRelatedPosts(currentPostId: string, categoryIds: string[]) {
   return client.fetch(`
     *[_type == "post" && _id != $currentPostId && count((categories[]->_id)[@ in $categoryIds]) > 0][0...3] {
+      _id,
       title,
       slug,
       mainImage,
