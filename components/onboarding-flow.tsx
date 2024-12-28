@@ -5,7 +5,7 @@ import { AnimatedEntry } from "@/components/ui/animated-entry"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ArrowLeft, X, Check, Loader2, Car, Fuel, Sun } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import emailjs from '@emailjs/browser';
 import { LocationPicker } from '@/components/location-picker'
 
@@ -75,9 +75,12 @@ const steps = [
 ]
 
 export function OnboardingFlow() {
-  const [currentStep, setCurrentStep] = useState(0)
+  const searchParams = useSearchParams()
+  const initialService = searchParams.get('service') as "ev" | "evcharger" | "solar" | ""
+  
+  const [currentStep, setCurrentStep] = useState(initialService ? 1 : 0)
   const [formData, setFormData] = useState<FormData>({
-    serviceType: "",
+    serviceType: initialService || "",
     name: "",
     email: "",
     phone: "",
