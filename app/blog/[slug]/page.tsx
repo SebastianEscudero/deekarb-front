@@ -7,9 +7,8 @@ import { es } from 'date-fns/locale'
 import Image from "next/image"
 import type { Category, Post } from "@/sanity/lib/types"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Car, ChevronRight, Fuel, Sun } from "lucide-react"
 import { Metadata } from "next"
-import { CheckCircle } from "lucide-react"
 import { BlogCard } from "@/components/blog/card"
 import { CtaButton } from "@/components/ui/cta-button"
 
@@ -289,30 +288,46 @@ export default async function BlogPost({ params }: Props) {
           {/* Sticky CTA */}
           <div className="hidden lg:block">
             <div className="sticky top-24">
-              <div className="rounded-xl bg-primary/5 p-6 space-y-4 border border-primary/50">
+              <div className="text-center rounded-md p-6 space-y-6 border border-black/20 bg-primary/40">
                 <h3 className="font-semibold text-lg">
-                  ¿Listo para instalar tu cargador?
+                  ¿Buscas soluciones de movilidad eléctrica?
                 </h3>
                 <p className="text-muted-foreground">
-                  Descubre cómo podemos ayudarte a instalar tu punto de carga sin costo inicial.
+                  Descubre nuestras soluciones integrales para tu transición a la energía limpia
                 </p>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary" />
-                    Sin costos de mantención
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary" />
-                    Instalación profesional
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-primary" />
-                    Soporte 24/7
-                  </li>
-                </ul>
-                <CtaButton className="w-full">
-                  Solicitar evaluación gratuita
-                </CtaButton>
+                
+                <div className="space-y-4">
+                  <Link 
+                    href="/onboarding" 
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white cursor-pointer group border border-black/50"
+                  >
+                    <Sun className="w-5 h-5 text-yellow-500 fill-yellow-500/20" />
+                    <h4 className="font-medium">Paneles solares</h4>
+                    <ChevronRight className="w-5 h-5 ml-auto transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                  </Link>
+
+                  <Link 
+                    href="/onboarding" 
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white cursor-pointer group border border-black/50"
+                  >
+                    <Fuel className="w-5 h-5 text-blue-500 fill-blue-500/20" />
+                    <h4 className="font-medium">Puntos de carga</h4>
+                    <ChevronRight className="w-5 h-5 ml-auto transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                  </Link>
+
+                  <Link 
+                    href="/onboarding" 
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white cursor-pointer group border border-black/50"
+                  >
+                    <Car className="w-5 h-5 text-red-500 fill-red-500/20" />
+                    <h4 className="font-medium">Auto eléctrico</h4>
+                    <ChevronRight className="w-5 h-5 ml-auto transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                  </Link>
+                </div>
+
+                <p className="text-sm text-muted-foreground">
+                  Soluciones para individuos y empresas
+                </p>
               </div>
             </div>
           </div>
