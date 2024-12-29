@@ -326,8 +326,8 @@ export default async function BlogPost({ params }: Props) {
                         <Fuel className="w-4 h-4 text-blue-600" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-medium text-gray-900">Puntos de carga</h4>
-                        <p className="text-xs text-gray-600">Instala un punto de carga con nosotros</p>
+                        <h4 className="font-medium text-gray-900">Punto de carga</h4>
+                        <p className="text-xs text-gray-600">Instala un cargador rápido de auto eléctrico con nosotros</p>
                       </div>
                       <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
                     </div>
