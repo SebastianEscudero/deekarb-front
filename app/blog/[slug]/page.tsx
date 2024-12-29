@@ -20,7 +20,7 @@ const portableTextComponents: PortableTextComponents = {
             src={urlFor(value).url()}
             alt={value.alt || ""}
             fill
-            className="object-cover"
+            className="object-cover rounded-xl"
           />
         </div>
         {value.alt && (
