@@ -71,7 +71,7 @@ export function Hero() {
                 </div>
 
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
-                  Podemos instalar un punto de carga en tu edificio sin costo
+                  Instalamos estaciones de carga de auto eléctrico sin costo
                 </h1>
 
                 <p className="text-xl text-white/90">
