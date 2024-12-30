@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { AnimatedEntry } from "@/components/ui/animated-entry"
 import { CheckCircle } from 'lucide-react'
 import { CtaButton } from "@/components/ui/cta-button"
+import { useState, useEffect } from 'react'
 
 const images = [
   {
@@ -22,6 +23,16 @@ const images = [
 ]
 
 export function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length)
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <div className="bg-background py-8">
       <div className="container mx-auto">
@@ -29,19 +40,21 @@ export function Hero() {
           {images.map((image, index) => (
             <div
               key={image.src}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-[300ms] ${index === 0
+              className={`absolute inset-0 w-full h-full transition-opacity duration-[300ms] ${
+                index === currentIndex
                   ? 'opacity-100 z-10'
                   : 'opacity-0 z-0'
-                }`}
+              }`}
             >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className={`object-cover ${index === 0
+                className={`object-cover ${
+                  index === currentIndex
                     ? 'animate-slow-zoom'
                     : ''
-                  }`}
+                }`}
                 priority={index === 0}
                 quality={100}
                 sizes="(max-width: 1280px) 100vw, 1280px"
