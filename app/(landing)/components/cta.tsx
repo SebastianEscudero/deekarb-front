@@ -1,8 +1,8 @@
 "use client"
 
 import { AnimatedEntry } from "@/components/ui/animated-entry"
-import { CtaButton } from "./ui/cta-button"
-import { Card } from "./ui/card"
+import { CtaButton } from "../../../components/ui/cta-button"
+import { Card } from "../../../components/ui/card"
 import { Zap, Clock, Shield, Wallet } from "lucide-react"
 import Image from "next/image"
 

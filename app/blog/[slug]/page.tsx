@@ -9,7 +9,7 @@ import type { Category, Post } from "@/sanity/lib/types"
 import Link from "next/link"
 import { ArrowLeft, Car, ChevronRight, Fuel, Sun } from "lucide-react"
 import { Metadata } from "next"
-import { BlogCard } from "@/components/blog/card"
+import { BlogCard } from "@/app/blog/components/card"
 
 const portableTextComponents: PortableTextComponents = {
   types: {

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, ArrowLeft, X, Check, Loader2, Car, Fuel, Sun } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import emailjs from '@emailjs/browser';
-import { LocationPicker } from '@/components/location-picker'
+import { LocationPicker } from "./location-picker"
 
 interface FormData {
   serviceType: "ev" | "evcharger" | "solar" | ""

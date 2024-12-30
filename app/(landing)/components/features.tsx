@@ -2,7 +2,7 @@
 
 import { Building2, Wallet, Wrench, BarChart3 } from 'lucide-react'
 import { AnimatedEntry } from "@/components/ui/animated-entry"
-import { Card } from "./ui/card"
+import { Card } from "../../../components/ui/card"
 
 const features = [
   {

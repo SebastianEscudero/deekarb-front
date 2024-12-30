@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { OnboardingFlow } from '@/components/onboarding-flow'
+import { OnboardingFlow } from '@/app/onboarding/components/onboarding-flow'
 import { Loader2 } from 'lucide-react'
 
 export default function OnboardingPage() {

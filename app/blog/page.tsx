@@ -1,8 +1,8 @@
 import { client } from "@/sanity/lib/client"
 import Link from "next/link"
-import { BlogHero } from "@/components/blog/hero"
+import { BlogHero } from "@/app/blog/components/hero"
 import { Post, Category } from "@/sanity/lib/types"
-import { BlogCard } from "@/components/blog/card"
+import { BlogCard } from "@/app/blog/components/card"
 
 // Function to fetch posts and categories from Sanity
 async function getData() {

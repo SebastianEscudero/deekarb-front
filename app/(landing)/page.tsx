@@ -1,11 +1,11 @@
-import { Calculator } from "@/components/calculator"
-import { Features } from "@/components/features"
+import { Calculator } from "@/app/(landing)/components/calculator"
+import { Features } from "@/app/(landing)/components/features"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
-import { Hero } from "@/components/hero"
-import { Stats } from "@/components/stats"
-import { CTA } from "@/components/cta"
-import { Benefits } from "@/components/benefits"
+import { Hero } from "@/app/(landing)/components/hero"
+import { Stats } from "@/app/(landing)/components/stats"
+import { CTA } from "@/app/(landing)/components/cta"
+import { Benefits } from "@/app/(landing)/components/benefits"
 
 export default function Home() {
   const schemaData = {

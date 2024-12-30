@@ -2,8 +2,8 @@
 
 import { useState, useCallback } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
-import { Button } from './ui/button'
 import { Locate, Map as MapIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 interface LocationPickerProps {
   direccion: string

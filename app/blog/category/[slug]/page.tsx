@@ -1,7 +1,7 @@
 import { client } from "@/sanity/lib/client"
 import { Post, Category } from "@/sanity/lib/types"
 import { notFound } from "next/navigation"
-import { BlogCard } from "@/components/blog/card"
+import { BlogCard } from "@/app/blog/components/card"
 import { Metadata } from "next"
 
 export async function generateStaticParams() {

@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { AnimatedEntry } from "@/components/ui/animated-entry"
 import { CheckCircle } from 'lucide-react'
-import { CtaButton } from "./ui/cta-button"
+import { CtaButton } from "@/components/ui/cta-button"
 
 const images = [
   {
