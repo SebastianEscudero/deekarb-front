@@ -167,17 +167,6 @@ export function Footer() {
         <div className="container mx-auto py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <div>© 2024 Deekarb. Pioneros en instalación de cargadores eléctricos en Chile.</div>
-            <div className="flex flex-wrap gap-8">
-              <Link href="/privacy" className="hover:text-primary transition-colors">
-                Política de Privacidad
-              </Link>
-              <Link href="/terms" className="hover:text-primary transition-colors">
-                Términos y Condiciones
-              </Link>
-              <Link href="/cookies" className="hover:text-primary transition-colors">
-                Cookies
-              </Link>
-            </div>
           </div>
         </div>
       </div>
