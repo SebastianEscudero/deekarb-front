@@ -64,7 +64,7 @@ export function Stats() {
       <div className="grid gap-8 md:grid-cols-3 text-center">
         <div className="space-y-2">
           <h3 className="text-4xl font-bold">
-            <AnimatedNumber end={50} duration={2000} suffix="%" />
+            <AnimatedNumber end={70} duration={2000} suffix="%" />
           </h3>
           <p className="text-muted-foreground">Ahorro en Costos de Carga</p>
           <p className="text-sm text-muted-foreground">vs. estaciones públicas</p>
@@ -78,7 +78,7 @@ export function Stats() {
         </div>
         <div className="space-y-2">
           <h3 className="text-4xl font-bold">
-            <AnimatedNumber end={100} duration={2000} suffix="+" />
+            <AnimatedNumber end={13} duration={2000} suffix="+" />
           </h3>
           <p className="text-muted-foreground">Puntos de Carga</p>
           <p className="text-sm text-muted-foreground">instalados en comunidades</p>
