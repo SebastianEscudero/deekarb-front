@@ -7,9 +7,10 @@ import { es } from 'date-fns/locale'
 import Image from "next/image"
 import type { Category, Post } from "@/sanity/lib/types"
 import Link from "next/link"
-import { ArrowLeft, Car, ChevronRight, Fuel, Sun } from "lucide-react"
+import { ArrowLeft, Car, ChevronRight, Fuel, Sun, ArrowRight } from "lucide-react"
 import { Metadata } from "next"
 import { BlogCard } from "@/app/blog/components/card"
+import { Button } from "@/components/ui/button"
 
 const portableTextComponents: PortableTextComponents = {
   types: {
@@ -268,6 +269,41 @@ export default async function BlogPost({ params }: Props) {
                 value={post.body} 
                 components={portableTextComponents}
               />
+            </div>
+
+            {/* Simple CTA with illustration */}
+            <div className="my-16">
+              <div className="p-8 bg-primary/15 rounded-2xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  {/* Text content */}
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1A1A1A] mb-3">
+                      Soluciones de carga para edificios y condominios
+                    </h3>
+                    <p className="text-lg text-[#4A4A4A] mb-6">
+                      Instalamos y gestionamos puntos de carga sin costo para la comunidad. Nos encargamos del diseño, instalación, operación y mantenimiento.
+                    </p>
+                    <Button asChild size="lg" className="rounded-full px-8 group">
+                      <Link href="/onboarding">
+                        <span>Quiero ser parte</span>
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Link> 
+                    </Button>
+                  </div>
+
+                  {/* Illustration */}
+                  <div className="relative h-full hidden md:block">
+                    <div className="absolute inset-0">
+                      <Image
+                        src="/illustrations/apartment.svg"
+                        alt=""
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Related Posts */}
