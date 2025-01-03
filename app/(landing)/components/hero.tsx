@@ -67,30 +67,28 @@ export function Hero() {
               <div className="flex flex-col justify-center h-full max-w-2xl space-y-6 p-8">
                 <div className="inline-flex items-center rounded-full border bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-white">
                   <span className="block size-2 rounded-full bg-primary mr-2 animate-pulse" />
-                  ¿Quieres un auto eléctrico y no tienes un punto de carga en tu edificio?
+                  Carga tu auto eléctrico en tu edificio
                 </div>
 
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
-                  Instalamos estaciones de carga de auto eléctrico sin costo
+                  Instalamos cargadores eléctricos en edificios sin costo inicial
                 </h1>
 
                 <p className="text-xl text-white/90">
-                  Nos encargamos de todo: desde la aprobación en la junta de vecinos
-                  hasta la instalación y configuración de tu cargador.
-                  Sin complicaciones, sin trámites engorrosos.
+                  Te ayudamos a instalar tu punto de carga en el edificio de forma simple y con financiamiento flexible.
                 </p>
                 <ul className="space-y-2 text-white/80">
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    Sin costos de mantención
+                    $0 costo inicial
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    Disfruta de tu auto eléctrico sin preocupaciones
+                    Instalación rápida y simple
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-primary" />
-                    Gestión completa sin costo adicional
+                    Nos encargamos de todo
                   </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4">
