@@ -71,7 +71,7 @@ export function Hero() {
                 </div>
 
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
-                  Instalamos cargadores eléctricos en edificios sin costo inicial
+                  Instalamos cargadores en edificios residenciales, y empresariales
                 </h1>
 
                 <p className="text-xl text-white/90">
