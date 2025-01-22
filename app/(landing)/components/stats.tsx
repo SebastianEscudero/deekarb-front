@@ -64,14 +64,14 @@ export function Stats() {
       <div className="grid gap-8 md:grid-cols-3 text-center">
         <div className="space-y-2">
           <h3 className="text-4xl font-bold">
-            <AnimatedNumber end={70} duration={2000} suffix="%" />
+            <AnimatedNumber end={38} duration={2000} suffix="%" />
           </h3>
           <p className="text-muted-foreground">Ahorro en Costos de Carga</p>
           <p className="text-sm text-muted-foreground">vs. estaciones públicas</p>
         </div>
         <div className="space-y-2">
           <h3 className="text-4xl font-bold">
-            <AnimatedNumber end={1500} duration={2000} suffix="+" />
+            <AnimatedNumber end={200} duration={2000} suffix="+" />
           </h3>
           <p className="text-muted-foreground">Toneladas de CO₂ Evitadas</p>
           <p className="text-sm text-muted-foreground">por nuestros usuarios</p>
