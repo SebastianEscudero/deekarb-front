@@ -1,10 +1,10 @@
-import { Calculator } from "@/app/(landing)/components/calculator"
-import { Features } from "@/app/(landing)/components/features"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/app/(landing)/components/hero"
-import { Stats } from "@/app/(landing)/components/stats"
-import { CTA } from "@/app/(landing)/components/cta"
+import ClickableTabSection from "@/app/(landing)/components/clickable-tab-section"
+import CTA from "@/app/(landing)/components/cta"
+import Logos from "@/app/(landing)/components/logos"
+import HowItWorks from "@/app/(landing)/components/how-it-works"
 import { Benefits } from "@/app/(landing)/components/benefits"
 
 export default function Home() {
@@ -27,18 +27,15 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
-      />
+    <div className="bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}/>
       <Navbar />
-      <main>
+      <main className="pt-48 bg-gradient-to-b from-[#EEEEEE] via-primary/15 to-[#EEEEEE] space-y-24">
         <Hero />
-        <Stats />
-        <Features />
+        <Logos />
+        <HowItWorks />
+        <ClickableTabSection />
         <Benefits />
-        <Calculator />
         <CTA />
       </main>
       <Footer />

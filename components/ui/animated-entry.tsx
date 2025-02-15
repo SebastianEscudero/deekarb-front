@@ -12,7 +12,7 @@ interface AnimatedEntryProps {
 export function AnimatedEntry({
   children,
   direction = "up",
-  delay = 100,
+  delay = 200,
   className = ""
 }: AnimatedEntryProps) {
   const [isVisible, setIsVisible] = useState(false)

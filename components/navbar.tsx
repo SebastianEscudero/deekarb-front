@@ -1,7 +1,6 @@
 import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -24,6 +23,11 @@ import { Category, Post } from "@/sanity/lib/types"
 
 const components: { title: string; href: string; description: string }[] = [
   {
+    title: "Solutions",
+    href: "/solutions",
+    description: "Complete EV charging management platform.",
+  },
+  {
     title: "Beneficios",
     href: "/#beneficios",
     description: "Descubre las ventajas de la movilidad eléctrica.",
@@ -45,7 +49,6 @@ const components: { title: string; href: string; description: string }[] = [
   },
 ]
 
-// Update the getLatestPosts function to also fetch categories
 async function getNavData() {
   const [posts, categories] = await Promise.all([
     client.fetch(`
@@ -64,16 +67,16 @@ async function getNavData() {
       }
     `)
   ])
-  
+
   return { posts, categories }
 }
 
 export async function Navbar() {
   const { posts, categories } = await getNavData()
-  
+
   return (
-    <header className="sticky top-0 z-50 w-full border-t-2 border-t-primary bg-background">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="fixed top-6 left-0 right-0 z-50 mx-auto max-w-7xl rounded-3xl bg-white shadow-sm">
+      <div className="flex h-14 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Image src="/logos/deekarb-logo.svg" alt="Deekarb" width={150} height={150} />
         </Link>
@@ -81,18 +84,53 @@ export async function Navbar() {
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
+          <NavigationMenuItem>
+          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <li className="row-span-3">
+                <NavigationMenuLink asChild>
+                  <Link
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-rose-500 to-indigo-700 p-6 no-underline outline-none focus:shadow-md"
+                    href="/"
+                  >
+                    <div className="mt-4 mb-2 text-lg font-medium text-white">
+                      shadcn/ui
+                    </div>
+                    <p className="text-sm leading-tight text-white/90">
+                      Beautifully designed components built with Radix UI and
+                      Tailwind CSS.
+                    </p>
+                  </Link>
+                </NavigationMenuLink>
+              </li>
+              <Link href="/docs" title="Introduction">
+                Re-usable components built using Radix UI and Tailwind CSS.
+              </Link>
+              <Link href="/docs/installation" title="Installation">
+                How to install dependencies and structure your app.
+              </Link>
+              <Link href="/docs/primitives/typography" title="Typography">
+                Styles for headings, paragraphs, lists...etc
+              </Link>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent">Recursos</NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent className="">
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                   {components.map((component) => (
-                    <ListItem
+                    <Link
                       key={component.title}
-                      title={component.title}
                       href={component.href}
+                      className="space-y-1 rounded-md p-3 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     >
-                      {component.description}
-                    </ListItem>
+                      <div className="text-sm font-medium leading-none">{component.title}</div>
+                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        {component.description}
+                      </p>
+                    </Link>
                   ))}
                 </ul>
               </NavigationMenuContent>
@@ -102,12 +140,11 @@ export async function Navbar() {
               <NavigationMenuContent>
                 <div className="w-[800px] p-4">
                   <div className="grid grid-cols-[2fr,1fr] gap-8">
-                    {/* Posts Section */}
                     <div>
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         {posts.map((post: Post) => (
-                          <Link 
-                            key={post.slug.current} 
+                          <Link
+                            key={post.slug.current}
                             href={`/blog/${post.slug.current}`}
                             className="group block space-y-2"
                           >
@@ -127,9 +164,9 @@ export async function Navbar() {
                           </Link>
                         ))}
                       </div>
-                      
+
                       <div className="border-t pt-4">
-                        <Link 
+                        <Link
                           href="/blog"
                           className="inline-flex items-center space-x-2 text-sm font-medium text-primary hover:text-primary/80"
                         >
@@ -139,7 +176,6 @@ export async function Navbar() {
                       </div>
                     </div>
 
-                    {/* Categories Section */}
                     <div className="border-l pl-8">
                       <h3 className="font-medium mb-4">Categorías</h3>
                       <div className="space-y-2">
@@ -169,10 +205,18 @@ export async function Navbar() {
         </NavigationMenu>
 
         <div className="flex items-center space-x-4">
-          <Button asChild size="sm" className="rounded-full px-6">
-            <Link href="/onboarding">Solicitar Información</Link>
-          </Button>
-          
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              className="text-[15px] font-normal hover:bg-transparent hover:text-black transition-colors"
+            >
+              Log In
+            </Button>
+            <Button variant="primary" className="rounded-2xl">
+              Open Account
+            </Button>
+          </div>
+
           {/* Mobile Navigation */}
           <Sheet>
             <SheetTrigger asChild>
@@ -184,16 +228,16 @@ export async function Navbar() {
             <SheetContent side="right" className="w-full sm:w-[400px]">
               <nav className="flex flex-col space-y-6 mt-8">
                 {components.map((item) => (
-                  <Link 
+                  <Link
                     key={item.title}
-                    href={item.href} 
+                    href={item.href}
                     className="text-lg font-medium hover:text-primary transition-colors"
                   >
                     {item.title}
                   </Link>
                 ))}
-                <Link 
-                  href="/#contacto" 
+                <Link
+                  href="/#contacto"
                   className="text-lg font-medium hover:text-primary transition-colors"
                 >
                   Contacto
@@ -209,30 +253,4 @@ export async function Navbar() {
     </header>
   )
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
 
