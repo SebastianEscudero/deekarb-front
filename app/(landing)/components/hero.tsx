@@ -44,8 +44,8 @@ export function Hero() {
           <Image 
             src="/landing/dashboard.png" 
             alt="Dashboard Preview" 
-            width={1024} 
-            height={640}
+            width={10000} 
+            height={10000}
             className="w-full rounded-2xl"
             quality={100}
             priority

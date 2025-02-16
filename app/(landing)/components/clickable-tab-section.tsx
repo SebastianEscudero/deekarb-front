@@ -8,35 +8,65 @@ import { Button } from "@/components/ui/button"
 export default function ClickableTabSection() {
     const sections = [
         {
-            name: "Profit Breakdowns",
-            title: 'See corporate profit status at a glance',
-            description: "Flourish intelligently recalculates cash inflows and outflows to provide a more complete picture of your financial standing",
+            name: "Reduce tus costos",
+            title: (
+                <>
+                    Hasta <span className="text-primary font-semibold">36% menos</span> en costos de energía
+                </>
+            ),
+            description: (
+                <>
+                    Al optimizar tus cargas y evitar horas pico, podemos llegar a{' '}
+                    <span className="text-primary font-semibold">ahorrar hasta 50%</span>
+                    {' '}en el consumo de energía para tus vehículos.
+                </>
+            ),
             image: "/landing/dashboard.png"
         },
         {
-            name: "Fraud Controls",
-            title: 'Set alerts & controls on spending',
-            description: "No longer worry about corporate cards and excessive spending. Flourish vets all alerts before sending to keep you focused on what matters",
+            name: "Cuida tus baterías",
+            title: (
+                <>
+                    <span className="text-primary font-semibold">Mayor vida útil</span> garantizada
+                </>
+            ),
+            description: (
+                <>
+                    Nuestro sistema inteligente puede{' '}
+                    <span className="text-primary font-semibold">extender la vida útil de tus baterías hasta un 15%</span>
+                    {' '}al optimizar los ciclos de carga.
+                </>
+            ),
             image: "/landing/dashboard.png"
         },
         {
-            name: "Working Capital",
-            title: 'Access up to 4x the working capital',
-            description: "In as little as a quarter of the time of traditional banks with a variety of funding products to get you up and moving faster than ever",
+            name: "Gestiona remotamente",
+            title: (
+                <>
+                    Control <span className="text-primary font-semibold">total centralizado</span>
+                </>
+            ),
+            description: (
+                <>
+                    Monitoreo y control centralizado que{' '}
+                    <span className="text-primary font-semibold">garantiza una disponibilidad del 99.99%</span>
+                    {' '}de tus estaciones de carga.
+                </>
+            ),
             image: "/landing/dashboard.png"
         }
     ]
 
     return (
-        <div className="w-full max-w-7xl mx-auto p-10 pb-28 bg-white rounded-3xl">
-            <Tabs defaultValue="Profit Breakdowns" className="w-full">
+        <div className="w-full max-w-7xl mx-auto py-10 px-16 pb-28 bg-white rounded-3xl">
+            <Tabs defaultValue="Reduce tus costos" className="w-full">
                 <div className="flex justify-center mb-20">
                     <TabsList className="w-fit h-auto space-x-2 bg-gray-100 p-1 rounded-full">
                         {sections.map((section) => (
                             <TabsTrigger 
                                 key={section.name} 
                                 value={section.name}
-                                className="rounded-full px-6 py-2 data-[state=active]:bg-[#E76F51] data-[state=active]:text-white text-black"
+                                className="rounded-full text-base px-6 py-2 data-[state=active]:bg-primary data-[state=active]:text-white text-black data-[state=active]:shadow-none"
                             >
                                 {section.name}
                             </TabsTrigger>
@@ -50,8 +80,7 @@ export default function ClickableTabSection() {
                             <div className="space-y-4 max-w-sm">
                                 <h2 className="text-4xl font-medium tracking-tight">{section.title}</h2>
                                 <p className="text-gray-600">
-                                    Flourish intelligently recalculates cash inflows and outflows to provide a more complete picture of your
-                                    financial standing
+                                    {section.description}
                                 </p>
                                 <Button variant="ghost" className="bg-gray-100 p-6 rounded-3xl">
                                     Show me more <ArrowRight className="ml-2 h-4 w-4" />

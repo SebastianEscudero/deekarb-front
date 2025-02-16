@@ -4,7 +4,6 @@ import { Hero } from "@/app/(landing)/components/hero"
 import ClickableTabSection from "@/app/(landing)/components/clickable-tab-section"
 import CTA from "@/app/(landing)/components/cta"
 import Logos from "@/app/(landing)/components/logos"
-import HowItWorks from "@/app/(landing)/components/how-it-works"
 import { Benefits } from "@/app/(landing)/components/benefits"
 
 export default function Home() {
@@ -33,7 +32,6 @@ export default function Home() {
       <main className="pt-48 bg-gradient-to-b from-[#EEEEEE] via-primary/15 to-[#EEEEEE] space-y-24">
         <Hero />
         <Logos />
-        <HowItWorks />
         <ClickableTabSection />
         <Benefits />
         <CTA />

@@ -7,17 +7,17 @@ const steps = [
   {
     title: "Flotas",
     description: "Nos encargaremos de todas las referencias cruzadas, para que no tengas que preocuparte por las reservas dobles.",
-    image: "/illustrations/flota-camiones.webp"
+    image: "/illustrations/flota-2.svg"
   },
   {
     title: "Operación de Cargadores",
     description: "¿Quieres bloquear los fines de semana? ¿Configurar algún margen? Lo hacemos fácil.",
-    image: "/illustrations/cargadores.webp"
+    image: "/illustrations/vehiculos-medianos-cargando.svg"
   },
   {
     title: "Solución Integral",
     description: "¡Podría ser una videollamada, una llamada telefónica o un paseo por el parque!",
-    image: "/illustrations/instalacion-paneles.webp"
+    image: "/illustrations/flota-3.svg"
   }
 ]
 
@@ -38,18 +38,18 @@ export default function HowItWorks() {
       <div className="grid md:grid-cols-3 gap-6">
         {steps.map((step, index) => (
           <AnimatedEntry key={index} delay={200 + index * 300}>
-            <Card className="hover:shadow-lg transition-shadow duration-300 rounded-3xl h-[500px] flex flex-col justify-between">
+            <Card className="rounded-3xl h-full flex flex-col justify-between">
               <CardHeader className="p-10">
                 <CardTitle className="text-xl">{step.title}</CardTitle>
                 <CardDescription className="text-base">
                   {step.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-0">
+              <CardContent>
                 <Image 
                   src={step.image} 
                   alt={step.title} 
-                  className="w-auto h-auto pb-10 rounded-b-3xl object-cover" 
+                  className="w-full h-auto pb-10 rounded-b-3xl object-cover" 
                   width={2000}
                   height={2000}
                 />
