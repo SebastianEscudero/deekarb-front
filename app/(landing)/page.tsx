@@ -12,14 +12,14 @@ export default function Home() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Instalación de Cargadores Eléctricos en Condominios",
+    "name": "Electromovilidad, sin complicaciones",
     "provider": {
       "@type": "Organization",
       "name": "Deekarb",
-      "description": "Especialistas en instalación de cargadores para autos eléctricos en condominios",
+      "description": "Gestiona tu flota y cargadores, reduce hasta 54% en costos de energía, prolonga la vida útil de tus vehículos y opera tus estaciones públicas",
       "areaServed": "Chile"
     },
-    "serviceType": "Instalación de puntos de carga eléctrica",
+    "serviceType": "Gestión y optimización de cargadores de vehículos eléctricos",
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStock",
