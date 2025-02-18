@@ -27,9 +27,7 @@ export function BlogHero({ post }: BlogHeroProps) {
                     <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/30 to-[#1A1A1A]" />
                 </>
             )}
-
-            <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
-
+            
             <div className="container relative z-10 py-16">
                 <div className="max-w-3xl space-y-6 space-x-2">
                     {post.categories.map((category: Category) => (

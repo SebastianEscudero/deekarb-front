@@ -7,7 +7,7 @@ import { es } from 'date-fns/locale'
 import Image from "next/image"
 import type { Category, Post } from "@/sanity/lib/types"
 import Link from "next/link"
-import { ArrowLeft, Car, ChevronRight, Fuel, Sun, ArrowRight } from "lucide-react"
+import { ArrowLeft, Car, ChevronRight, Fuel, Sun, CalendarIcon, ChevronsRight } from "lucide-react"
 import { Metadata } from "next"
 import { BlogCard } from "@/app/blog/components/card"
 import { Button } from "@/components/ui/button"
@@ -246,8 +246,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
       </div>
 
-      {/* Back button */}
-      <div className="sticky top-0 z-50 bg-white border-b">
+      <div className="bg-white border-b">
         <div className="container py-4">
           <Link 
             href="/blog" 
@@ -271,36 +270,31 @@ export default async function BlogPost({ params }: Props) {
               />
             </div>
 
-            {/* Simple CTA with illustration */}
-            <div className="my-16">
-              <div className="p-8 bg-primary/15 rounded-2xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                  {/* Text content */}
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#1A1A1A] mb-3">
-                      Soluciones de carga para edificios y condominios
-                    </h3>
-                    <p className="text-lg text-[#4A4A4A] mb-6">
-                      Instalamos y gestionamos puntos de carga sin costo para la comunidad. Nos encargamos del diseño, instalación, operación y mantenimiento.
-                    </p>
-                    <Button asChild size="lg" className="rounded-full px-8 group">
-                      <Link href="/onboarding">
-                        <span>Quiero ser parte</span>
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Link> 
+            <div className="bg-primary rounded-3xl p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h2 className="text-2xl font-bold mb-6 text-white md:max-w-md">¿Qué harías si tu operación costara 30% de lo que cuesta hoy?</h2>
+                <p className="text-lg text-white/90 mb-8">
+                  Con nuestra gestión inteligente de carga, optimizamos tus costos operativos y maximizamos el rendimiento de tu flota eléctrica.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link href="#contacto">
+                    <Button variant="ghost" className="bg-gray-100 p-6 rounded-3xl" >
+                        Más información <ChevronsRight className="ml-2 h-4 w-4" />
                     </Button>
-                  </div>
-
-                  {/* Illustration */}
-                  <div className="relative h-full hidden md:block">
-                    <div className="absolute inset-0">
-                      <Image
-                        src="/illustrations/apartment.svg"
-                        alt=""
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
+                  </Link>
+                  <Link href="#contacto">
+                    <Button variant="ghost" className="bg-gray-600/30 p-6 rounded-3xl text-white" >
+                        Agendar Demo <CalendarIcon className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="bg-white/10 rounded-3xl p-4 transform rotate-1">
+                  <div className="bg-white rounded-2xl w-full h-48 flex items-center justify-center">
+                    <svg viewBox="0 0 100 100" className="w-24 h-24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M50 20v60M20 50h60" stroke="#16a34a" strokeWidth="8" strokeLinecap="round" />
+                    </svg>
                   </div>
                 </div>
               </div>

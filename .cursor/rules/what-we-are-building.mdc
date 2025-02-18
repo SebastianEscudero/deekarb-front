@@ -1,0 +1,22 @@
+---
+description: When writing landing page copy
+globs: 
+---
+project_name: Deekarb
+description: |
+  We are building a **charging system for EV fleets and public stations**, combining **hardware and software** to make charging more **efficient and manageable**.
+
+  ## Why We're Building It  
+  EV sales in Chile **doubled in 2024**, but charging infrastructure only grew **by 10%**, creating a major gap.
+
+  ### **Fleets Are Charging Inefficiently**
+  - **Higher Costs:** Fleets charge at peak hours (6–10 PM in winter), when electricity is most expensive.  
+  - **Battery Wear:** Many fleets use fast chargers when they don’t need to, reducing battery life.  
+  - **No Remote Management:** Companies can’t reset, monitor, or generate reports for their chargers.  
+
+  ### **Public Charging Is Not Growing Fast Enough**  
+  - The **problem isn’t demand—it’s infrastructure**, as confirmed by **ANAC and SEC**.  
+  - Existing companies only install chargers but **don’t provide software** to operate or bill users.  
+
+  ## **Our Solution**  
+  We help **fleets charge smarter** and enable businesses to **operate public charging stations**, ensuring that more people can switch to EVs **without running into infrastructure problems**.

@@ -13,7 +13,7 @@ const config: Config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1600px",
+        "2xl": "1344px",
       },
     },
     extend: {
@@ -24,7 +24,10 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#00bf63",
+          DEFAULT: "#16a24b",
+          hover: "#138a40",
+          light: "#e6f9ef",
+          dark: "#008f4a",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

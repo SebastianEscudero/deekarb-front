@@ -2,116 +2,64 @@
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { AnimatedEntry } from "@/components/ui/animated-entry"
-import { CheckCircle } from 'lucide-react'
-import { CtaButton } from "@/components/ui/cta-button"
-import { useState, useEffect } from 'react'
-
-const images = [
-  {
-    src: "/landing/hero-1.jpg",
-    alt: "Cargador eléctrico en uso"
-  },
-  {
-    src: "/landing/hero-2.jpg",
-    alt: "Estación de carga residencial"
-  },
-  {
-    src: "/landing/hero-3.jpg",
-    alt: "Instalación de cargador"
-  }
-]
+import { Calendar, ChevronsRight } from "lucide-react"
 
 export function Hero() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length)
-    }, 5000)
-
-    return () => clearInterval(timer)
-  }, [])
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
-    <div className="bg-background py-8">
-      <div className="container mx-auto">
-        <div className="relative min-h-[600px] rounded-lg overflow-hidden">
-          {images.map((image, index) => (
-            <div
-              key={image.src}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-[300ms] ${
-                index === currentIndex
-                  ? 'opacity-100 z-10'
-                  : 'opacity-0 z-0'
-              }`}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className={`object-cover ${
-                  index === currentIndex
-                    ? 'animate-slow-zoom'
-                    : ''
-                }`}
-                priority={index === 0}
-                quality={100}
-                sizes="(max-width: 1280px) 100vw, 1280px"
-                loading={index === 0 ? 'eager' : 'lazy'}
-              />
-            </div>
-          ))}
-          <div className="relative z-20 h-full">
-            <AnimatedEntry delay={300}>
-              <div className="flex flex-col justify-center h-full max-w-2xl space-y-6 p-8">
-                <div className="inline-flex items-center rounded-full border bg-white/10 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-white">
-                  <span className="block size-2 rounded-full bg-primary mr-2 animate-pulse" />
-                  Carga tu auto eléctrico en tu edificio
-                </div>
+    <div>
 
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
-                  Instalamos cargadores en edificios residenciales, y empresariales
-                </h1>
+      {/* Hero Section */}
+      <main className="container text-center">
+        <h1 className="text-4xl md:text-7xl font-normal mb-6">
+          Electromovilidad
+          <br />
+          <span className="text-primary">sin complicaciones</span>
+        </h1>
 
-                <p className="text-xl text-white/90">
-                  Te ayudamos a instalar tu punto de carga en el edificio de forma simple y con financiamiento flexible.
-                </p>
-                <ul className="space-y-2 text-white/80">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    $0 costo inicial
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    Instalación rápida y simple
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    Nos encargamos de todo
-                  </li>
-                </ul>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <CtaButton className="w-full">
-                    Solicitar evaluación sin costo
-                  </CtaButton>
-                  <Button
-                    variant="default"
-                    size="lg"
-                    className="bg-white/80 backdrop-blur-sm hover:bg-white/90"
-                    onClick={() => {
-                      document.getElementById('calculadora')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    Calcular ahorros
-                  </Button>
-                </div>
-              </div>
-            </AnimatedEntry>
-          </div>
-          <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/80 to-transparent" />
+        <p className="text-base md:text-xl mb-12 max-w-xl mx-auto text-gray-600">
+          Gestiona tu flota y cargadores, reduce hasta 54% en costos de energía, prolonga la vida útil de tus vehículos y opera tus estaciones públicas.
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16 max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="flex w-full p-1 rounded-2xl bg-white space-x-2 shadow-sm">
+            <input 
+              name="email"
+              type="email"
+              required
+              placeholder="Tu email" 
+              className="w-full bg-transparent px-4 rounded-2xl outline-primary"
+            />
+            <Button type="submit" variant="primary" className="p-5 rounded-2xl">Empezar</Button>
+          </form>
+          <Button variant="outline" className="flex items-center rounded-2xl p-6 px-10" size="lg" onClick={() => window.location.href='#contacto'}>
+            <Calendar className="w-6 h-6" />
+            Agendar Demo
+          </Button>
         </div>
-      </div>
+
+        <button onClick={() => window.location.href='#contacto'} className="text-zinc-500 hover:text-zinc-700 inline-flex items-center gap-2">
+          Conoce la plataforma
+          <ChevronsRight className="w-4 h-4" />
+        </button>
+
+        {/* Dashboard Preview */}
+        <div className="mt-4">
+          <Image 
+            src="/landing/dashboard.png" 
+            alt="Dashboard Preview" 
+            width={10000} 
+            height={10000}
+            className="w-full rounded-2xl shadow-sm"
+            quality={100}
+            priority
+          />
+        </div>
+      </main>
     </div>
   )
 }
