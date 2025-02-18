@@ -246,8 +246,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
       </div>
 
-      {/* Back button */}
-      <div className="sticky top-0 z-50 bg-white border-b">
+      <div className="bg-white border-b">
         <div className="container py-4">
           <Link 
             href="/blog" 

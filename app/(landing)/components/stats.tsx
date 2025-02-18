@@ -59,31 +59,52 @@ function AnimatedNumber({ end, duration, suffix = '', prefix = '' }: AnimatedNum
 }
 
 export function Stats() {
+  const stats = [
+    {
+      value: 34,
+      label: "Reducción promedio en costos de energía con carga inteligente",
+      suffix: "%",
+    },
+    {
+      value: 50,
+      label: "Cargadores operados por nosotros",
+      suffix: "+",
+    },
+    {
+      value: 17,
+      label: "Prolongación promedio de la vida útil de las baterías",
+      suffix: "%",
+    },
+    {
+      value: 10,
+      label: "Marcas distintas de cargadores operados",
+      suffix: "",
+    },
+  ]
+
   return (
-    <section className="container py-16 md:py-24">
-      <div className="grid gap-8 md:grid-cols-3 text-center">
-        <div className="space-y-2">
-          <h3 className="text-4xl font-bold">
-            <AnimatedNumber end={38} duration={2000} suffix="%" />
-          </h3>
-          <p className="text-muted-foreground">Ahorro en Costos de Carga</p>
-          <p className="text-sm text-muted-foreground">vs. estaciones públicas</p>
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-4xl font-bold">
-            <AnimatedNumber end={200} duration={2000} suffix="+" />
-          </h3>
-          <p className="text-muted-foreground">Toneladas de CO₂ Evitadas</p>
-          <p className="text-sm text-muted-foreground">por nuestros usuarios</p>
-        </div>
-        <div className="space-y-2">
-          <h3 className="text-4xl font-bold">
-            <AnimatedNumber end={13} duration={2000} suffix="+" />
-          </h3>
-          <p className="text-muted-foreground">Puntos de Carga</p>
-          <p className="text-sm text-muted-foreground">instalados en comunidades</p>
-        </div>
+    <div className="w-full container">
+      <div className="space-y-4 mb-16">
+        <h1 className="text-4xl font-semibold tracking-tight">
+          Carga para tus vehículos, pero inteligente.
+        </h1>
+        <p className="text-3xl text-muted-foreground font-medium">
+          Ahorra costos y maximiza la eficiencia de tu flota.
+        </p>
       </div>
-    </section>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-24">
+        {stats.map((stat, index) => (
+          <div key={index} className="space-y-2">
+            <div className="text-3xl font-semibold tracking-tight border-l-[3px] border-gray-300 pl-4">
+              <AnimatedNumber end={stat.value} duration={2000} suffix={stat.suffix} />
+            </div>
+            <div className="text-muted-foreground text-sm font-medium leading-tight pl-4">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }

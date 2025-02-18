@@ -21,34 +21,6 @@ import { urlFor } from "@/sanity/lib/image"
 import { ArrowRight } from "lucide-react"
 import { Category, Post } from "@/sanity/lib/types"
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Solutions",
-    href: "/solutions",
-    description: "Complete EV charging management platform.",
-  },
-  {
-    title: "Beneficios",
-    href: "/#beneficios",
-    description: "Descubre las ventajas de la movilidad eléctrica.",
-  },
-  {
-    title: "Calculadora",
-    href: "/#calculadora",
-    description: "Calcula el costo de tu cargador eléctrico.",
-  },
-  {
-    title: "Blog",
-    href: "/blog",
-    description: "Noticias y artículos sobre movilidad eléctrica.",
-  },
-  {
-    title: "Contacto",
-    href: "/#contacto",
-    description: "Contáctanos para más información.",
-  },
-]
-
 async function getNavData() {
   const [posts, categories] = await Promise.all([
     client.fetch(`
@@ -75,64 +47,52 @@ export async function Navbar() {
   const { posts, categories } = await getNavData()
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 mx-auto max-w-7xl rounded-3xl bg-white shadow-sm">
-      <div className="flex h-14 items-center justify-between px-4">
+    <header className="fixed top-6 left-0 right-0 z-50 container">
+      <div className="flex h-16 items-center justify-between bg-white rounded-2xl shadow-sm px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Image src="/logos/deekarb-logo.svg" alt="Deekarb" width={150} height={150} />
         </Link>
 
         {/* Desktop Navigation */}
         <NavigationMenu className="hidden md:flex">
-          <NavigationMenuList>
-          <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <Link
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-rose-500 to-indigo-700 p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mt-4 mb-2 text-lg font-medium text-white">
-                      shadcn/ui
-                    </div>
-                    <p className="text-sm leading-tight text-white/90">
-                      Beautifully designed components built with Radix UI and
-                      Tailwind CSS.
-                    </p>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-              <Link href="/docs" title="Introduction">
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </Link>
-              <Link href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </Link>
-              <Link href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </Link>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+          <NavigationMenuList className="flex items-center space-x-4">
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="bg-transparent">Recursos</NavigationMenuTrigger>
-              <NavigationMenuContent className="">
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                  {components.map((component) => (
-                    <Link
-                      key={component.title}
-                      href={component.href}
-                      className="space-y-1 rounded-md p-3 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                    >
-                      <div className="text-sm font-medium leading-none">{component.title}</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        {component.description}
-                      </p>
+              <NavigationMenuTrigger>Soluciones</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="w-[700px] p-4">
+                  <div className="grid grid-cols-3 gap-3">
+
+                    <Link href="/#soluciones" className="bg-gray-50 hover:bg-gray-100 rounded-3xl p-4 border border-gray-200">
+                      <h3 className="text-base font-medium">Gestión de flota</h3>
+                      <p className="text-sm text-muted-foreground mb-4">Opera y optimiza la carga de tu flota electrica.</p>
+                      <Image src="/illustrations/van-cargando.svg" alt="Corporate Card" width={300} height={300} className="h-[150px]" />
                     </Link>
-                  ))}
-                </ul>
+
+                    <Link href="/#soluciones" className="bg-gray-50 hover:bg-gray-100 rounded-3xl p-4 border border-gray-200">
+                      <h3 className="text-base font-medium">Gestión de cargadores</h3>
+                      <p className="text-sm text-muted-foreground mb-4">Optimiza el uso de tus cargadores eléctricos.</p>
+                      <Image src="/illustrations/cargador.svg" alt="Corporate Card" width={300} height={300} className="h-[150px]" />
+                    </Link>
+                    
+                    <div className="pl-3">
+                      <h4 className="text-sm font-medium mb-2">Soluciones</h4>
+                      <div className="flex flex-col gap-2">
+                        <Link href="/#soluciones" className="text-sm text-muted-foreground hover:text-primary">
+                          Gestión y optimización
+                        </Link>
+                        <Link href="/#soluciones" className="text-sm text-muted-foreground hover:text-primary">
+                          Asesoría y soporte
+                        </Link>
+                        <Link href="/#soluciones" className="text-sm text-muted-foreground hover:text-primary">
+                          Monitoreo y alertas
+                        </Link>
+                        <Link href="/#soluciones" className="text-sm text-muted-foreground hover:text-primary">
+                          Solución integral
+                        </Link>
+                      </div>
+                    </div>
+                  </div>  
+                </div>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
@@ -177,7 +137,7 @@ export async function Navbar() {
                     </div>
 
                     <div className="border-l pl-8">
-                      <h3 className="font-medium mb-4">Categorías</h3>
+                      <h3 className="text-sm font-medium mb-2">Categorías</h3>
                       <div className="space-y-2">
                         {categories.map((category: Category) => (
                           <Link
@@ -196,7 +156,7 @@ export async function Navbar() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link href="/#contacto" legacyBehavior passHref>
-                <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                <NavigationMenuLink className="text-base group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                   Contacto
                 </NavigationMenuLink>
               </Link>
@@ -206,15 +166,19 @@ export async function Navbar() {
 
         <div className="flex items-center space-x-4">
           <div className="flex items-center gap-3">
-            <Button
-              variant="ghost"
-              className="text-[15px] font-normal hover:bg-transparent hover:text-black transition-colors"
-            >
-              Log In
-            </Button>
-            <Button variant="primary" className="rounded-2xl">
-              Open Account
-            </Button>
+            <Link href="https://app.deekarb.com/">
+              <Button
+                variant="ghost"
+                className="hidden sm:flex text-[15px] font-normal hover:bg-transparent hover:text-black transition-colors"
+              >
+                Log In
+              </Button>
+            </Link>
+            <Link href="/#contacto">
+              <Button variant="primary" className="rounded-2xl" >
+                Conoce más
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation */}
@@ -226,25 +190,63 @@ export async function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:w-[400px]">
+              <div className="sr-only">Menu de navegación</div>
               <nav className="flex flex-col space-y-6 mt-8">
-                {components.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    className="text-lg font-medium hover:text-primary transition-colors"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
+                <div className="space-y-4">
+                  <h2 className="text-lg font-medium">Soluciones</h2>
+                  <div className="ml-4 flex flex-col space-y-3">
+                    <Link href="/#soluciones" className="text-muted-foreground hover:text-primary">
+                      Gestión y optimización
+                    </Link>
+                    <Link href="/#soluciones" className="text-muted-foreground hover:text-primary">
+                      Asesoría y soporte
+                    </Link>
+                    <Link href="/#soluciones" className="text-muted-foreground hover:text-primary">
+                      Monitoreo y alertas
+                    </Link>
+                    <Link href="/#soluciones" className="text-muted-foreground hover:text-primary">
+                      Solución integral
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h2 className="text-lg font-medium">Blog</h2>
+                  <div className="ml-4 flex flex-col space-y-3">
+                    <Link href="/blog" className="text-muted-foreground hover:text-primary">
+                      Últimos artículos
+                    </Link>
+                    {categories.map((category: Category) => (
+                      <Link
+                        key={category.slug.current}
+                        href={`/blog/category/${category.slug.current}`}
+                        className="text-muted-foreground hover:text-primary"
+                      >
+                        {category.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
                 <Link
                   href="/#contacto"
                   className="text-lg font-medium hover:text-primary transition-colors"
                 >
                   Contacto
                 </Link>
-                <Button asChild className="w-full rounded-full mt-4">
-                  <Link href="/onboarding">Solicitar Información</Link>
-                </Button>
+
+                <div className="flex flex-col gap-3 pt-4">
+                  <Link href="https://app.deekarb.com/">
+                    <Button variant="outline" className="w-full">
+                      Log In
+                    </Button>
+                  </Link>
+                  <Link href="/#contacto">
+                    <Button variant="primary" className="w-full">
+                      Conoce más
+                    </Button>
+                  </Link>
+                </div>
               </nav>
             </SheetContent>
           </Sheet>

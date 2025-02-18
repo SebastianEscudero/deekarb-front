@@ -1,10 +1,12 @@
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { Hero } from "@/app/(landing)/components/hero"
-import ClickableTabSection from "@/app/(landing)/components/clickable-tab-section"
-import CTA from "@/app/(landing)/components/cta"
-import Logos from "@/app/(landing)/components/logos"
-import { Benefits } from "@/app/(landing)/components/benefits"
+import { ClickableTabSection } from "@/app/(landing)/components/tabs"
+import { CTA } from "@/app/(landing)/components/cta"
+import { Logos } from "@/app/(landing)/components/logos"
+import { Solutions } from "@/app/(landing)/components/solutions"
+import { Stats } from "@/app/(landing)/components/stats"
+import { BentoCards } from "@/app/(landing)/components/bento-cards"
 
 export default function Home() {
   const schemaData = {
@@ -29,11 +31,13 @@ export default function Home() {
     <div className="bg-background">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}/>
       <Navbar />
-      <main className="pt-48 bg-gradient-to-b from-[#EEEEEE] via-primary/15 to-[#EEEEEE] space-y-24">
+      <main className="pt-48 bg-gradient-to-b from-[#EEEEEE] via-primary/5 to-[#EEEEEE] space-y-24">
         <Hero />
         <Logos />
+        <Solutions />
         <ClickableTabSection />
-        <Benefits />
+        <Stats />
+        <BentoCards />
         <CTA />
       </main>
       <Footer />
