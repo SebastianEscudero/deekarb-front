@@ -48,13 +48,13 @@ export function Hero() {
         </button>
 
         {/* Dashboard Preview */}
-        <div className="mt-4">
+        <div className="mt-4 max-w-6xl mx-auto">
           <Image 
             src="/landing/dashboard.png" 
             alt="Dashboard Preview" 
             width={10000} 
             height={10000}
-            className="w-full rounded-2xl shadow-sm"
+            className="w-full rounded-2xl shadow-md border border-gray-300"
             quality={100}
             priority
           />
