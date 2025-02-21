@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import "./globals.css"
 
-const baseFont = Plus_Jakarta_Sans({ 
+const font = Inter({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"]
 })
+
 
 export const metadata: Metadata = {
   title: "Electromovilidad, sin complicaciones | Deekarb",
@@ -25,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={baseFont.className}>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   )
 }
