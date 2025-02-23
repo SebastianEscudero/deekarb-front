@@ -318,72 +318,72 @@ export default async function BlogPost({ params }: Props) {
           {/* Sticky CTA */}
           <div className="hidden lg:block">
             <div className="sticky top-24">
-              <div className="rounded-xl overflow-hidden border shadow-lg">
+              <div className="rounded-3xl overflow-hidden border bg-white shadow-sm">
                 {/* Header */}
-                <div className="bg-gradient-to-br from-primary to-primary/80 p-4 text-center">
-                  <h3 className="font-semibold text-lg text-white">
-                    ¿Buscas soluciones de movilidad eléctrica?
+                <div className="bg-primary p-4 text-center">
+                  <h3 className="font-bold text-lg text-white">
+                    ¿Necesitas optimizar tu consumo energético?
                   </h3>
-                  <p className="mt-1 text-sm text-white/90">
-                    Descubre nuestras soluciones integrales
+                  <p className="mt-1 text-sm text-white/90 mx-4">
+                    Gestiona tu carga de forma inteligente y optimiza tus costos.
                   </p>
                 </div>
 
                 {/* Service Options */}
-                <div className="p-3 space-y-2 bg-white">
+                <div className="p-4 space-y-3">
                   <Link 
                     href="/onboarding?service=solar" 
-                    className="block p-3 rounded-lg hover:bg-gray-50 transition-colors group"
+                    className="block p-3 rounded-xl hover:bg-gray-50 transition-all group border"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-yellow-100">
-                        <Sun className="w-4 h-4 text-yellow-600" />
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        <Sun className="w-4 h-4 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-medium text-gray-900">Paneles solares</h4>
-                        <p className="text-xs text-gray-600">Energía limpia para tu hogar</p>
+                        <h4 className="font-semibold text-[#1A1A1A] text-sm">Energía Solar</h4>
+                        <p className="text-xs text-[#4A4A4A]">Genera tu propia energía renovable</p>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
+                      <ChevronRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
 
                   <Link 
                     href="/onboarding?service=evcharger" 
-                    className="block p-3 rounded-lg hover:bg-gray-50 transition-colors group"
+                    className="block p-3 rounded-xl hover:bg-gray-50 transition-all group border"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-blue-100">
-                        <Fuel className="w-4 h-4 text-blue-600" />
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        <Fuel className="w-4 h-4 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-medium text-gray-900">Punto de carga</h4>
-                        <p className="text-xs text-gray-600">Instala un cargador rápido de auto eléctrico con nosotros</p>
+                        <h4 className="font-semibold text-[#1A1A1A] text-sm">Carga Inteligente</h4>
+                        <p className="text-xs text-[#4A4A4A]">Optimiza costos hasta un 54%</p>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
+                      <ChevronRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
 
                   <Link 
                     href="/onboarding?service=ev" 
-                    className="block p-3 rounded-lg hover:bg-gray-50 transition-colors group"
+                    className="block p-3 rounded-xl hover:bg-gray-50 transition-all group border"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-red-100">
-                        <Car className="w-4 h-4 text-red-600" />
+                      <div className="p-2 rounded-lg bg-primary/10">
+                        <Car className="w-4 h-4 text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-medium text-gray-900">Auto eléctrico</h4>
-                        <p className="text-xs text-gray-600">Leasing de vehículos eléctricos</p>
+                        <h4 className="font-semibold text-[#1A1A1A] text-sm">Flota Eléctrica</h4>
+                        <p className="text-xs text-[#4A4A4A]">Leasing y gestión inteligente</p>
                       </div>
-                      <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
+                      <ChevronRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 </div>
 
                 {/* Footer */}
-                <div className="p-2 bg-gray-50 border-t text-center">
-                  <p className="text-xs text-gray-600">
-                    Soluciones para individuos y empresas
+                <div className="p-3 bg-gray-50 text-center border-t">
+                  <p className="text-xs text-[#4A4A4A]">
+                    Soluciones integrales con gestión inteligente
                   </p>
                 </div>
               </div>
