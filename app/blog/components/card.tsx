@@ -38,7 +38,7 @@ export function BlogCard({ post, isCompact = false }: BlogCardProps) {
                       e.preventDefault()
                       router.push(`/blog/category/${category.slug.current}`)
                     }}
-                    className="px-3 py-1 text-xs font-medium bg-primary/90 text-black hover:bg-primary 
+                    className="px-3 py-1 text-xs font-medium bg-primary/90 text-white hover:bg-primary 
                              rounded-full transition-colors cursor-pointer"
                   >
                     {category.title}
