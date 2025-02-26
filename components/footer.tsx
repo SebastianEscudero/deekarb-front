@@ -6,34 +6,38 @@ import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 
-const CTASection = () => (
-  <div className="container pt-10">
-    <div className="flex flex-col lg:flex-row w-full gap-12">
-      <div className="max-w-3xl mb-16">
-        <h2 className="text-6xl font-bold tracking-tight mb-4">
-          Ahorra hasta un <span className="text-primary">54%</span> en costos de energía
-        </h2>
-        <p className="text-gray-300 text-xl my-6 max-w-md">
-          Agenda una demo rápida de 30 minutos y conoce nuestras soluciones.
-        </p>
-        <Image
-          src="/illustrations/connect.svg"
-          alt="Agenda una demo"
-          width={500}
-          height={500}
-          className="rounded-2xl"
-        />
-      </div>
-      <div className="w-full max-w-md h-[700px] rounded-3xl">
-        <Cal namespace="30min"
-          calLink="sebastian-deekarb/30min"
-          className="w-full h-full overflow-scroll rounded-3xl"
-          config={{ "layout": "month_view" }}
-        />
+const CTASection = () => {
+  const calLink = process.env.NEXT_PUBLIC_CAL_CALLLINK || "sebastian-deekarb/30min";
+  
+  return (
+    <div className="container pt-10">
+      <div className="flex flex-col lg:flex-row w-full gap-12">
+        <div className="max-w-3xl mb-16">
+          <h2 className="text-6xl font-bold tracking-tight mb-4">
+            Ahorra hasta un <span className="text-primary">54%</span> en costos de energía
+          </h2>
+          <p className="text-gray-300 text-xl my-6 max-w-md">
+            Agenda una demo rápida de 30 minutos y conoce nuestras soluciones.
+          </p>
+          <Image
+            src="/illustrations/connect.svg"
+            alt="Agenda una demo"
+            width={500}
+            height={500}
+            className="rounded-2xl"
+          />
+        </div>
+        <div className="w-full max-w-md h-[700px] rounded-3xl">
+          <Cal namespace="30min"
+            calLink={calLink}
+            className="w-full h-full overflow-scroll rounded-3xl"
+            config={{ "layout": "month_view" }}
+          />
+        </div>
       </div>
     </div>
-  </div>
-)
+  );
+}
 
 const MainFooter = () => (
   <div className="border-t border-zinc-800 container">
